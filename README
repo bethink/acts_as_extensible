@@ -1,0 +1,34 @@
+ActsAsSrExtensible
+==================
+
+Introduction goes here.
+
+Installation
+=========================================================================================
+  Copy this search_engine folder and paste in your app/vender/plugin path
+  execute this command "script/generate acts_as_sr_extensible extended_attributes_schemas" to get migartion files related to ActsAsSrExtensible plugin and run db:migrate to create a tables.
+  
+Example
+=========================================================================================
+
+Example goes here.
+
+class User < ActiveRecord::Base
+
+ acts_as_sr_extensible :schema_info=> [
+									   {:attr_name=>'example1',:data_type=>'string'},
+                                       {:attr_name=>'example2',:data_type=>'boolean'}
+                                     ]
+                                     
+ validates_presence_of(:example1, :message => "should not be blank")
+ validates_exclusion_of(:example2, :in => %w( dfasdfd dd), :message => "You don't belong here")
+
+end
+
+After all the above settings we can access those extended attributes like a normal attributes in User model.
+For Validation, use a default validation helper for extended attributes like normal attributes. 
+
+=========================================================================================
+
+
+Copyright (c) 2010 [name of plugin creator], released under the MIT license
